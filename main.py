@@ -18,7 +18,7 @@ def put_value(var):
     for i in range(0, round(len(var)/256)):
         print(var[(i * 256):(i * 256 + 256)])
         conn.set_var(f"CLOUD{i}", var[(i * 256):(i * 256 + 256)])
-sid = "\".eJxVj8tugzAQRf-FdUvxGIzJLl1UVRaNVCJVWVl-jINLsCMwitSq_15bYpOl7xmfufNbrAvOXk5Y7AonnY9qXiIvnooYRvQpbHjTKCAMalA1UMKxy2-pWis15XbXrOpEj1-R9eFAVnTvQ39_O4pDfzonzTVcnH92t2RqoeRVCaQq6y4RIdc4iLxeOJMwS6RhAAmZb-kvQUQ34U_wudp-wtlp-fKBd3EO8_j4f5DLkKvWivIWjGltJStTM2JsR5nWpLIWiJZIgDKq8nW4RB3C6LL8noRoHpVK6nR_7pUz9DFtjy74cgNL-Ym36xa-bsN__zgpbCY:1sM9XM:JKrz5lXLYOcq41ylQucuk7faMVs\""
+sid = os.environ["TOK"]
 session = scratch3.Session(sid, username="iaintbrst8")
 events = scratch3.CloudEvents("1041791800")
 conn = scratch3.CloudConnection(project_id="1041791800", username="iaintbrst8", session_id=sid)
