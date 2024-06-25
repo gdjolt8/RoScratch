@@ -28,7 +28,7 @@ def on_set(event): #Called when a cloud var is set
     decoded_value = scratch3.Encoding.decode(value)
     if event.var == "INTERACTION" and event.value == "1":
         val = get_user_id(value)
-        arr = val['description'] + ";" + val['created'] + ";" + val['isBanned'] + ";" + val['name'] + ';' + val['displayName']
+        arr = val['description'] + ";" + str(val['created']) + ";" + str(val['isBanned']) + ";" + val['name'] + ';' + val['displayName']
         put_value(scratch3.Encoding.encode(arr))
         conn.set_var("INTERACTION", 0)
 
