@@ -1,6 +1,8 @@
 import scratchattach as scratch3
 import os
 import requests
+import http.server
+import socketserver
 
 def get_user_id(username):
     url = f"https://users.roblox.com/v1/users/{username}"
@@ -42,3 +44,19 @@ def on_ready():
    print("Event listener ready!")
 
 events.start()
+
+PORT = 8000
+
+class HelloWorldHandler(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        # Set the response status code to 200 (OK)
+        self.send_response(200)
+        # Set the headers
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        # Write the response content
+        self.wfile.write(b"Hello, World!")
+
+with socketserver.TCPServer(("", PORT), HelloWorldHandler) as httpd:
+    print(f"Serving at port {PORT}")
+    httpd.serve_forever()
